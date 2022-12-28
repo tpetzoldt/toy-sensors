@@ -80,8 +80,10 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="interne-led-ansteuern" class="level1">
-<h1>Interne LED ansteuern</h1>
+<section id="ansteuern-von-licht-und-ton" class="level1">
+<h1>Ansteuern von Licht und Ton</h1>
+<section id="interne-led-ansteuern" class="level2">
+<h2 class="anchored" data-anchor-id="interne-led-ansteuern">Interne LED ansteuern</h2>
 <p>In einem ersten Experiment wollten wir die LED direkt auf dem Modul ansteuern. Hierzu verbinden wir das Modul über USB mit dem Computer oder mit einer Powerbank. Anschließend öffnen wir das Hauptmenü im Webbrowser und gehen auf “Configuration” <span class="math inline">\(\rightarrow\)</span> “Configure Module” und wählen <strong>Generic (0)</strong>. Nach “Save” und Restart” finden wir unter “Configuration” <span class="math inline">\(\rightarrow\)</span> “Configure Module” weitere Optionen.</p>
 <p>Auf der linken Seite sehen wir zwei Nummerierungen, einmal D3, TX, D4 … und einmal GPIO0, GPIO1, GPIO2. Wir nutzen im folgenden immer die Nummerierung ganz links, also ohne GPIO. Diese entsprechen dem Aufdruck auf dem Microcontroller-Board.</p>
 <p>Nun wählen wir für <strong>D4</strong> den Eintrag <strong>Relay</strong> aus. Nach einem Neustart des Moduls können wir die im Board eingebaute LED mit <strong>Toggle</strong> ein und ausschalten.</p>
@@ -92,8 +94,8 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
-<section id="eigene-led-ansteuern" class="level1">
-<h1>Eigene LED ansteuern</h1>
+<section id="eigene-led-ansteuern" class="level2">
+<h2 class="anchored" data-anchor-id="eigene-led-ansteuern">Eigene LED ansteuern</h2>
 <p>Hierfür setzen wir das Modul auf ein Steckbrett (Breadboard), so wie in der Abbildung gezeigt:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -112,6 +114,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Mit Hilfe von <strong>Toggle</strong> können wir die LED jetzt aus- oder einschalten.</p>
 <p><strong>Wichtig</strong> eine LED darf niemals direkt mit Plus und Minus verbunden werden, sondern immer über einen Widerstand, sonsonsten kann sie durchbrennen. Wie groß der Widerstand sein muss, hängt von der Stromversorgung und der LED ab.</p>
+</section>
 <section id="anschluss-einer-zweiten-led" class="level2">
 <h2 class="anchored" data-anchor-id="anschluss-einer-zweiten-led">Anschluss einer zweiten LED</h2>
 <p>Verbinde nun eine zweite (gelbe) LED mit Pin <strong>D3</strong> und konfiguriere <strong>D3</strong> als Relay Nummer 2.</p>
@@ -154,6 +157,37 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 <p>Nach einem Neustart des Boards erscheint ein Schieberegler als Dimmer.</p>
+</section>
+<section id="steuern-einer-led-kette" class="level2">
+<h2 class="anchored" data-anchor-id="steuern-einer-led-kette">Steuern einer LED-Kette</h2>
+<p>Anstelle einer einzelnen LED kann man auch eine LED-Kette ansteuern. Wenn man die rote LED durch eine LED-Kette ersetzt bleibt sie allerdings recht dunkel. Das liegt daran, dass die LED-Kette mehr Strom benötigt als eine einzelne LED. Der 330 Ohm-Vorwiderstand begrenzt den Strom zu stark, außerdem kann der Mikrokontroller-PIN <strong>D4</strong> nicht genug Strom liefern.</p>
+<p>Zur Lösung des Problems erweitern wir die Schaltung wie folgt:</p>
+<ol type="1">
+<li>Ersatz des 330 Ohm-Vorwiderstands durch einen kleineren Wert, z.B. 10 Ohm.</li>
+<li>Trennung des Stromkreises für die LED-Kette mit einem elektronischen Schalter.</li>
+</ol>
+<p>Als elektronischen Schalter könnte man ein Relay verwenden. Noch einfacher, billiger und stromsparender ist ein Transistor, genau gesagt ein Feldeffekttransistor FET. Der verwendete Typ IRLZ24N besitzt drei Anschlüsse.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="irlz24n.png" class="img-fluid figure-img" style="width:20.0%"></p>
+<p></p><figcaption class="figure-caption">Feldeffekttransistor IRLZ24N, Beschaltung: G, D, S</figcaption><p></p>
+</figure>
+</div>
+<p>Links befindet sich das “Gate” für die Steuerleitung, in der Mitte der “Drain” an den die LED-Kette angeschlossen werden kann und rechts der “Source”-Anschluss, der mit dem Minuspol verbunden wird.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="led-chain.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p></p><figcaption class="figure-caption">Steuerung einer LED-Kette mit Feldeffekt-Transistor</figcaption><p></p>
+</figure>
+</div>
+<p>Die Beschaltung ist wie folgt:</p>
+<ul>
+<li>grün: vom Mikrocontroller <strong>D4</strong> zum linken Anschluss des FET (Gate)</li>
+<li>10 Ohm-Widerstand vom mitleren Anschluss des FET (Drain) zum Minuspol der LET-Kette (blau)</li>
+<li>Steckbrücke (blau) vom Minuspol zum rechten Anschluss des FET (Source)</li>
+<li>Steckbrücke (rot) vom Pluspol zur LED-Kette</li>
+</ul>
+<p>Wenn alles richtig angeschlossen ist, können wir die Lichterkette vom PC oder Handy aus ein und ausschalten, dimmen oder über den Timer steuern.</p>
 </section>
 </section>
 <section id="sensoren" class="level1">
@@ -208,8 +242,8 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="luftdruck-und-licht" class="level2">
 <h2 class="anchored" data-anchor-id="luftdruck-und-licht">Luftdruck und Licht</h2>
-<p>Der Sensor aus dem vorherigen Beispiel benötigt zwei Signalleitungen statt nur einer. Das erscheint zunächst etwas umständlich aber es hat einen großen Vorteil. Die Anschlussmethode mit den zwei Signalleitungen ist ein sogenannter “Bus”, bei dem man mehrere Sensoren oder auch Displays einfach parallel nebeneinander hängen kann. So können wir zum Beispiel einen Lichtsensor BHI 750 hinzufügen, mit dem man das Licht im Zimmer oder im Freien in der Maßeinheit Lux messen kann.</p>
-<p>Hierbei bleibt der erste Anschluss vom BHI750 frei, die anderen haben die selbe Reihenfolge wie beim BMP180.</p>
+<p>Der Sensor aus dem vorherigen Beispiel benötigt zwei Signalleitungen statt nur einer. Das erscheint zunächst etwas umständlich aber es hat einen großen Vorteil. Die Anschlussmethode mit den zwei Signalleitungen ist ein sogenannter “Bus”, bei dem man mehrere Sensoren oder auch Displays einfach parallel nebeneinander hängen kann. So können wir zum Beispiel einen Lichtsensor BH 1750 hinzufügen, mit dem man das Licht im Zimmer oder im Freien in der Maßeinheit Lux messen kann.</p>
+<p>Hierbei bleibt der erste Anschluss vom BH 1750 frei, die anderen haben die selbe Reihenfolge wie beim BMP180.</p>
 <p>In der Konfiguration muss man nichts einstellen. Es genügt, das Board einmal neu zu starten und Tasmota erkennt den neuen Sensor automatisch.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -218,6 +252,15 @@ ul.task-list li input[type="checkbox"] {
 </figure>
 </div>
 </section>
+</section>
+<section id="ausblick" class="level1">
+<h1>Ausblick</h1>
+<p>Mit den vorgestellten Bauteilen kann man noch mehr machen. Man kann die Schaltungen verändern und kombinieren, man kann mit Tasmota Regeln aufstellen oder man kann den Mikrocontroller ohne Tasmota direkt in C++ programmieren.</p>
+<p>Mehr dazu findet man im Internet, z.B. unter:</p>
+<p><a href="https://tasmota.github.io/docs">https://tasmota.github.io/docs</a></p>
+<p>oder</p>
+<p><a href="https://arduino.cc">https://arduino.cc</a></p>
+<p>Viel Spaß!</p>
 </section>
 
 </main>
