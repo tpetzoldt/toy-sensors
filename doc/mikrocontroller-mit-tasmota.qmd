@@ -1,16 +1,16 @@
 ---
-title: "Mikrokontrollerexperimente ohne Programmieren und Löten"
+title: "Mikrocontrollerexperimente ohne Programmieren und Löten"
 format: html
 editor: source
 ---
 
 # Einführung
 
-Für die folgenden Experimente nutzen wir ein Entwicklungsboard mit einem ESP 8266 Microcontroller. Auf den Fotos ist ein "NodeMCU Lua Amica"-Modul zu sehen. Alternativ kann auch ein anderes Board verwendet werden, z.B. ein "Wemos Mini D1". Außerdem benötigen wir einen PC und eventuell ein Tablet oder Smartphone und die Zugangsdaten für ein WLAN.
+Für die folgenden Experimente nutzen wir ein Entwicklungsboard mit einem ESP 8266 Mikrocontroller. Auf den Fotos ist ein "NodeMCU Lua Amica"-Modul zu sehen. Alternativ kann auch ein anderes Board verwendet werden, z.B. ein "Wemos Mini D1". Außerdem benötigen wir einen PC und eventuell ein Tablet oder Smartphone und die Zugangsdaten für ein WLAN.
 
 ![NodeMCU Amica Mikrocontroller](amica.jpg){width=40%}
 
-Die Microcontroller-Boards mit dem ESP 8266 unterstützen WLAN und können mit Hilfe verschiedener Programmiersprachen programmiert werden. Das geht besonders einfach mit Hilfe der [Arduino-Entwicklungsumgebung](https://arduino.cc) und in einem vereinfachten C++-Dialekt.
+Die Mikrocontroller-Boards mit dem ESP 8266 unterstützen WLAN und können mit Hilfe verschiedener Programmiersprachen programmiert werden. Das geht besonders einfach mit Hilfe der [Arduino-Entwicklungsumgebung](https://arduino.cc) und in einem vereinfachten C++-Dialekt.
 
 Für die folgenden Projekte machen wir es uns noch einfacher und verzichten zunächst aufs Programmieren. Stattdessen laden wir die "Tasmota"-Firmware von Theo Arends auf das Board. Die Software kan frei von https://tasmota.github.io heruntergeladen werden.
 
@@ -27,7 +27,7 @@ Wenn die Software installiert ist, öffnet sich das Tasmota-Hauptmenü. Hier not
 
 In einem ersten Experiment wollten wir die LED direkt auf dem Modul ansteuern. Hierzu verbinden wir das Modul über USB mit dem Computer oder mit einer Powerbank. Anschließend öffnen wir das Hauptmenü im Webbrowser und gehen auf "Configuration" $\rightarrow$ "Configure Module" und wählen **Generic (0)**. Nach "Save" und Restart" finden wir unter "Configuration" $\rightarrow$ "Configure Module" weitere Optionen.
 
-Auf der linken Seite sehen wir zwei Nummerierungen, einmal D3, TX, D4 ... und einmal GPIO0, GPIO1, GPIO2. Wir nutzen im folgenden immer die Nummerierung ganz links, also ohne GPIO. Diese entsprechen dem Aufdruck auf dem Microcontroller-Board.
+Auf der linken Seite sehen wir zwei Nummerierungen, einmal D3, TX, D4 ... und einmal GPIO0, GPIO1, GPIO2. Wir nutzen im folgenden immer die Nummerierung ganz links, also ohne GPIO. Diese entsprechen dem Aufdruck auf dem Mikrocontroller-Board.
 
 Nun wählen wir für **D4** den Eintrag **Relay** aus. Nach einem Neustart des Moduls können wir die im Board eingebaute LED mit **Toggle** ein und ausschalten.
 
@@ -89,7 +89,7 @@ Nach einem Neustart des Boards erscheint ein Schieberegler als Dimmer.
 
 ## Steuern einer LED-Kette
 
-Anstelle einer einzelnen LED kann man auch eine LED-Kette ansteuern. Wenn man die rote LED durch eine LED-Kette ersetzt bleibt sie allerdings recht dunkel. Das liegt daran, dass die LED-Kette mehr Strom benötigt als eine einzelne LED. Der 330 Ohm-Vorwiderstand begrenzt den Strom zu stark, außerdem kann der Mikrokontroller-PIN **D4** nicht genug Strom liefern.
+Anstelle einer einzelnen LED kann man auch eine LED-Kette ansteuern. Wenn man die rote LED durch eine LED-Kette ersetzt bleibt sie allerdings recht dunkel. Das liegt daran, dass die LED-Kette mehr Strom benötigt als eine einzelne LED. Der 330 Ohm-Vorwiderstand begrenzt den Strom zu stark, außerdem kann der Mikrocontroller-PIN **D4** nicht genug Strom liefern.
 
 Zur Lösung des Problems erweitern wir die Schaltung wie folgt:
 
@@ -97,7 +97,7 @@ Zur Lösung des Problems erweitern wir die Schaltung wie folgt:
 2. Trennung des Stromkreises für die LED-Kette mit einem elektronischen Schalter.
 
 Als elektronischen Schalter könnte man ein Relay verwenden. Noch einfacher, billiger und 
-stromsparender ist ein Transistor, genau gesagt ein Feldeffekttransistor FET. Der verwendete Typ IRLZ24N besitzt drei Anschlüsse.
+stromsparender ist ein Transistor, genau gesagt ein Feldeffekttransistor (FET). Der verwendete Typ IRLZ24N besitzt drei Anschlüsse.
 
 ![Feldeffekttransistor IRLZ24N, Beschaltung: G, D, S](irlz24n.png){width=20%}
 
@@ -110,10 +110,12 @@ Die Beschaltung ist wie folgt:
 
 * grün: vom Mikrocontroller **D4** zum linken Anschluss des FET (Gate)
 * 10 Ohm-Widerstand vom mitleren Anschluss des FET (Drain) zum Minuspol der LET-Kette (blau)
-* Steckbrücke (blau) vom Minuspol zum rechten Anschluss des FET (Source)
-* Steckbrücke (rot) vom Pluspol zur LED-Kette
+* Steckbrücke (blau) vom Minuspol der Stromschiene zum rechten Anschluss des FET (Source)
+* Steckbrücke (rot) vom Pluspol der Stromschiene zur LED-Kette
 
 Wenn alles richtig angeschlossen ist, können wir die Lichterkette vom PC oder Handy aus ein und ausschalten, dimmen oder über den Timer steuern.
+
+\pagebreak
 
 # Sensoren
 
@@ -121,11 +123,11 @@ Bei den bisherigen Beispielen ging es darum, Licht und Signale zu steuern. Mit H
 
 ## Messung von Temperatur und Luftfeuchte
 
-Für dieses Experiment benutzen wir einen digitalen Temperatur- und Feuchtesensor vom Typ AM2301, manchmal auch als DHT22 bezeichnet. Der Sensor hat 4 Anschlüsse, von denen nur drei benutzt werden:
+Für das erste Experiment benutzen wir einen digitalen Temperatur- und Feuchtesensor vom Typ AM2301, auch als DHT22 bezeichnet. Der Sensor hat 4 Anschlüsse, von denen nur drei benutzt werden:
 
-Pluspol, Signal, unbenutzt, Minuspol.
+* Pluspol, Signal, unbenutzt, Minuspol.
 
-Um etwas Ordnung zu bekommen, nutzen wir ab jetzt für die kürzeren Verbindungen keine Kabel (sogenannte Jumperkabel) mehr, sondern kurze Steckbrücken.
+Um etwas Ordnung zu bekommen, nutzen wir ab jetzt für kürzere Verbindungen keine Kabel (sogenannte Jumperkabel) mehr, sondern kurze Drahtstücke (Steckbrücken).
 
 ![Temperatur- und Feuchtesensor AM 2301](am2301.jpg){width=80%}
 
@@ -137,21 +139,22 @@ Der Taupunkt (dew point) ist die Temperatur, bei der der in der Luft enthaltene 
 
 ## Temperatursensor DS18B20
 
-Der DS18B20 ist ebenfalls ein Temperatursensor. Er ist sehr klein und preiswert und es gibt ihn auch mit Verlängerungskabel, so dass man in Flüssigkeiten messen kann.
+Der DS18B20 ist ebenfalls ein Temperatursensor. Er ist sehr klein und relativ 
+preiswert, außerdem gibt ihn auch mit Verlängerungskabel, so dass man in Flüssigkeiten messen kann.
 
 Beim Anschluss an einen Mikrocontroller sind folgende Dinge zu beachten:
 
 1. Wenn man von vorn auf die runde Seite schaut, dann ist die Anschlussreihenfolge: Pluspol, Signal, Minuspol
 2. Zwischen der Signalleitung und dem Pluspol muss man einen Widerstand einfügen, einen sogenannten "Pull-Up-Widerstand". Dieser beträgt typischerweise 4.7 Kiloohm, bei langen Verbindungskabeln auch weniger.
-3. Man darf keineswegs Plus- und Minuspol vertauschen, sonst wird der Sensor heiß und ist nach wenigen Minuten kaputt.
+3. Man darf keineswegs Plus- und Minuspol vertauschen, sonst wird der Sensor heiß und ist nach wenigen Minuten kaputt!
 
 ![Anschluss eines DS18B20](ds18b20.jpg){width=80%}
 
-In der Tasmota-Konfiguration wählt man nun für **D4** die Einstellung "DS18x20" und nach einem Neustart kann man die Temperatur im Tee messen. Hierfür kann man den verkabelten DS18B20 verwenden.
+In der Tasmota-Konfiguration wählt man nun für **D4** die Einstellung "DS18x20" und nach einem Neustart kann man die Temperatur messen, z.B. im Tee. Hierfür kann man den verkabelten DS18B20 verwenden.
 
 ## Luftdruck
 
-Zur Messung des Luftdrucks kann man den Sensor BMP180 verwenden. Dieser Sensor ist sehr genau und wird z.B. in Drohnen als Höhenmesser verwendet. Eine Besonderheit ist, dass der Sensor zwei Signalleitungen benötigt. Diese heißen I2C SDA und I2C SCL und können am Microcontroller auch nicht beliebig platziert werden. Im vorliegenden Beispiel nutzen wir die Anschlüsse D2 und D1.
+Zur Messung des Luftdrucks kann man den Sensor BMP180 verwenden. Dieser Sensor ist sehr genau und wird z.B. in Drohnen als Höhenmesser verwendet. Eine Besonderheit ist, dass der Sensor zwei Signalleitungen benötigt. Diese heißen "I2C SDA" und "I2C SCL" und können am Mikrocontroller auch nicht beliebig platziert werden. Im vorliegenden Beispiel nutzen wir die Anschlüsse D2 und D1.
 
 ![Luftdruck- und Temperatursensor](bmp180.jpg){width=80%}
 

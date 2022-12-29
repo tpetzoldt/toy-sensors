@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Mikrokontrollerexperimente ohne Programmieren und Löten</title>
+<title>Mikrocontrollerexperimente ohne Programmieren und Löten</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,16 +23,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="introduction_files/libs/clipboard/clipboard.min.js"></script>
-<script src="introduction_files/libs/quarto-html/quarto.js"></script>
-<script src="introduction_files/libs/quarto-html/popper.min.js"></script>
-<script src="introduction_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="introduction_files/libs/quarto-html/anchor.min.js"></script>
-<link href="introduction_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="introduction_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="introduction_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="introduction_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="introduction_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="mikrocontroller-mit-tasmota_files/libs/clipboard/clipboard.min.js"></script>
+<script src="mikrocontroller-mit-tasmota_files/libs/quarto-html/quarto.js"></script>
+<script src="mikrocontroller-mit-tasmota_files/libs/quarto-html/popper.min.js"></script>
+<script src="mikrocontroller-mit-tasmota_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="mikrocontroller-mit-tasmota_files/libs/quarto-html/anchor.min.js"></script>
+<link href="mikrocontroller-mit-tasmota_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="mikrocontroller-mit-tasmota_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="mikrocontroller-mit-tasmota_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="mikrocontroller-mit-tasmota_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="mikrocontroller-mit-tasmota_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -46,7 +46,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Mikrokontrollerexperimente ohne Programmieren und Löten</h1>
+<h1 class="title">Mikrocontrollerexperimente ohne Programmieren und Löten</h1>
 </div>
 
 
@@ -62,14 +62,14 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="einführung" class="level1">
 <h1>Einführung</h1>
-<p>Für die folgenden Experimente nutzen wir ein Entwicklungsboard mit einem ESP 8266 Microcontroller. Auf den Fotos ist ein “NodeMCU Lua Amica”-Modul zu sehen. Alternativ kann auch ein anderes Board verwendet werden, z.B. ein “Wemos Mini D1”. Außerdem benötigen wir einen PC und eventuell ein Tablet oder Smartphone und die Zugangsdaten für ein WLAN.</p>
+<p>Für die folgenden Experimente nutzen wir ein Entwicklungsboard mit einem ESP 8266 Mikrocontroller. Auf den Fotos ist ein “NodeMCU Lua Amica”-Modul zu sehen. Alternativ kann auch ein anderes Board verwendet werden, z.B. ein “Wemos Mini D1”. Außerdem benötigen wir einen PC und eventuell ein Tablet oder Smartphone und die Zugangsdaten für ein WLAN.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="amica.jpg" class="img-fluid figure-img" style="width:40.0%"></p>
 <p></p><figcaption class="figure-caption">NodeMCU Amica Mikrocontroller</figcaption><p></p>
 </figure>
 </div>
-<p>Die Microcontroller-Boards mit dem ESP 8266 unterstützen WLAN und können mit Hilfe verschiedener Programmiersprachen programmiert werden. Das geht besonders einfach mit Hilfe der <a href="https://arduino.cc">Arduino-Entwicklungsumgebung</a> und in einem vereinfachten C++-Dialekt.</p>
+<p>Die Mikrocontroller-Boards mit dem ESP 8266 unterstützen WLAN und können mit Hilfe verschiedener Programmiersprachen programmiert werden. Das geht besonders einfach mit Hilfe der <a href="https://arduino.cc">Arduino-Entwicklungsumgebung</a> und in einem vereinfachten C++-Dialekt.</p>
 <p>Für die folgenden Projekte machen wir es uns noch einfacher und verzichten zunächst aufs Programmieren. Stattdessen laden wir die “Tasmota”-Firmware von Theo Arends auf das Board. Die Software kan frei von https://tasmota.github.io heruntergeladen werden.</p>
 <p>Die Installation gelingt am einfachsten mit dem <a href="https://tasmota.github.io/install/">Web-Installer</a>. Für die unten genannten Experimente benötigen wir die Version <strong>Tasmota Sensors</strong>.</p>
 <p>Wenn die Software installiert ist, öffnet sich das Tasmota-Hauptmenü. Hier notieren wir uns zunächst die IP-Adresse (im Beispiel 192.168.178.228). Diese ist wichtig, um später auf das Modul zugzugreifen, z.B. über http://192.168.178.228 . Die Verbindung erfolgt unverschlüsselt über http und nicht https, deshalb steht im unten genannten Bild “Not secure” bzw. “Nicht sicher”.</p>
@@ -85,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="interne-led-ansteuern" class="level2">
 <h2 class="anchored" data-anchor-id="interne-led-ansteuern">Interne LED ansteuern</h2>
 <p>In einem ersten Experiment wollten wir die LED direkt auf dem Modul ansteuern. Hierzu verbinden wir das Modul über USB mit dem Computer oder mit einer Powerbank. Anschließend öffnen wir das Hauptmenü im Webbrowser und gehen auf “Configuration” <span class="math inline">\(\rightarrow\)</span> “Configure Module” und wählen <strong>Generic (0)</strong>. Nach “Save” und Restart” finden wir unter “Configuration” <span class="math inline">\(\rightarrow\)</span> “Configure Module” weitere Optionen.</p>
-<p>Auf der linken Seite sehen wir zwei Nummerierungen, einmal D3, TX, D4 … und einmal GPIO0, GPIO1, GPIO2. Wir nutzen im folgenden immer die Nummerierung ganz links, also ohne GPIO. Diese entsprechen dem Aufdruck auf dem Microcontroller-Board.</p>
+<p>Auf der linken Seite sehen wir zwei Nummerierungen, einmal D3, TX, D4 … und einmal GPIO0, GPIO1, GPIO2. Wir nutzen im folgenden immer die Nummerierung ganz links, also ohne GPIO. Diese entsprechen dem Aufdruck auf dem Mikrocontroller-Board.</p>
 <p>Nun wählen wir für <strong>D4</strong> den Eintrag <strong>Relay</strong> aus. Nach einem Neustart des Moduls können wir die im Board eingebaute LED mit <strong>Toggle</strong> ein und ausschalten.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -160,13 +160,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="steuern-einer-led-kette" class="level2">
 <h2 class="anchored" data-anchor-id="steuern-einer-led-kette">Steuern einer LED-Kette</h2>
-<p>Anstelle einer einzelnen LED kann man auch eine LED-Kette ansteuern. Wenn man die rote LED durch eine LED-Kette ersetzt bleibt sie allerdings recht dunkel. Das liegt daran, dass die LED-Kette mehr Strom benötigt als eine einzelne LED. Der 330 Ohm-Vorwiderstand begrenzt den Strom zu stark, außerdem kann der Mikrokontroller-PIN <strong>D4</strong> nicht genug Strom liefern.</p>
+<p>Anstelle einer einzelnen LED kann man auch eine LED-Kette ansteuern. Wenn man die rote LED durch eine LED-Kette ersetzt bleibt sie allerdings recht dunkel. Das liegt daran, dass die LED-Kette mehr Strom benötigt als eine einzelne LED. Der 330 Ohm-Vorwiderstand begrenzt den Strom zu stark, außerdem kann der Mikrocontroller-PIN <strong>D4</strong> nicht genug Strom liefern.</p>
 <p>Zur Lösung des Problems erweitern wir die Schaltung wie folgt:</p>
 <ol type="1">
 <li>Ersatz des 330 Ohm-Vorwiderstands durch einen kleineren Wert, z.B. 10 Ohm.</li>
 <li>Trennung des Stromkreises für die LED-Kette mit einem elektronischen Schalter.</li>
 </ol>
-<p>Als elektronischen Schalter könnte man ein Relay verwenden. Noch einfacher, billiger und stromsparender ist ein Transistor, genau gesagt ein Feldeffekttransistor FET. Der verwendete Typ IRLZ24N besitzt drei Anschlüsse.</p>
+<p>Als elektronischen Schalter könnte man ein Relay verwenden. Noch einfacher, billiger und stromsparender ist ein Transistor, genau gesagt ein Feldeffekttransistor (FET). Der verwendete Typ IRLZ24N besitzt drei Anschlüsse.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="irlz24n.png" class="img-fluid figure-img" style="width:20.0%"></p>
@@ -184,8 +184,8 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>grün: vom Mikrocontroller <strong>D4</strong> zum linken Anschluss des FET (Gate)</li>
 <li>10 Ohm-Widerstand vom mitleren Anschluss des FET (Drain) zum Minuspol der LET-Kette (blau)</li>
-<li>Steckbrücke (blau) vom Minuspol zum rechten Anschluss des FET (Source)</li>
-<li>Steckbrücke (rot) vom Pluspol zur LED-Kette</li>
+<li>Steckbrücke (blau) vom Minuspol der Stromschiene zum rechten Anschluss des FET (Source)</li>
+<li>Steckbrücke (rot) vom Pluspol der Stromschiene zur LED-Kette</li>
 </ul>
 <p>Wenn alles richtig angeschlossen ist, können wir die Lichterkette vom PC oder Handy aus ein und ausschalten, dimmen oder über den Timer steuern.</p>
 </section>
@@ -195,9 +195,11 @@ ul.task-list li input[type="checkbox"] {
 <p>Bei den bisherigen Beispielen ging es darum, Licht und Signale zu steuern. Mit Hilfe der Tasmota-Software ist es auch möglich Sensorsignale auszulesen.</p>
 <section id="messung-von-temperatur-und-luftfeuchte" class="level2">
 <h2 class="anchored" data-anchor-id="messung-von-temperatur-und-luftfeuchte">Messung von Temperatur und Luftfeuchte</h2>
-<p>Für dieses Experiment benutzen wir einen digitalen Temperatur- und Feuchtesensor vom Typ AM2301, manchmal auch als DHT22 bezeichnet. Der Sensor hat 4 Anschlüsse, von denen nur drei benutzt werden:</p>
-<p>Pluspol, Signal, unbenutzt, Minuspol.</p>
-<p>Um etwas Ordnung zu bekommen, nutzen wir ab jetzt für die kürzeren Verbindungen keine Kabel (sogenannte Jumperkabel) mehr, sondern kurze Steckbrücken.</p>
+<p>Für das erste Experiment benutzen wir einen digitalen Temperatur- und Feuchtesensor vom Typ AM2301, auch als DHT22 bezeichnet. Der Sensor hat 4 Anschlüsse, von denen nur drei benutzt werden:</p>
+<ul>
+<li>Pluspol, Signal, unbenutzt, Minuspol.</li>
+</ul>
+<p>Um etwas Ordnung zu bekommen, nutzen wir ab jetzt für kürzere Verbindungen keine Kabel (sogenannte Jumperkabel) mehr, sondern kurze Drahtstücke (Steckbrücken).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="am2301.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
@@ -215,12 +217,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="temperatursensor-ds18b20" class="level2">
 <h2 class="anchored" data-anchor-id="temperatursensor-ds18b20">Temperatursensor DS18B20</h2>
-<p>Der DS18B20 ist ebenfalls ein Temperatursensor. Er ist sehr klein und preiswert und es gibt ihn auch mit Verlängerungskabel, so dass man in Flüssigkeiten messen kann.</p>
+<p>Der DS18B20 ist ebenfalls ein Temperatursensor. Er ist sehr klein und relativ preiswert, außerdem gibt ihn auch mit Verlängerungskabel, so dass man in Flüssigkeiten messen kann.</p>
 <p>Beim Anschluss an einen Mikrocontroller sind folgende Dinge zu beachten:</p>
 <ol type="1">
 <li>Wenn man von vorn auf die runde Seite schaut, dann ist die Anschlussreihenfolge: Pluspol, Signal, Minuspol</li>
 <li>Zwischen der Signalleitung und dem Pluspol muss man einen Widerstand einfügen, einen sogenannten “Pull-Up-Widerstand”. Dieser beträgt typischerweise 4.7 Kiloohm, bei langen Verbindungskabeln auch weniger.</li>
-<li>Man darf keineswegs Plus- und Minuspol vertauschen, sonst wird der Sensor heiß und ist nach wenigen Minuten kaputt.</li>
+<li>Man darf keineswegs Plus- und Minuspol vertauschen, sonst wird der Sensor heiß und ist nach wenigen Minuten kaputt!</li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -228,11 +230,11 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">Anschluss eines DS18B20</figcaption><p></p>
 </figure>
 </div>
-<p>In der Tasmota-Konfiguration wählt man nun für <strong>D4</strong> die Einstellung “DS18x20” und nach einem Neustart kann man die Temperatur im Tee messen. Hierfür kann man den verkabelten DS18B20 verwenden.</p>
+<p>In der Tasmota-Konfiguration wählt man nun für <strong>D4</strong> die Einstellung “DS18x20” und nach einem Neustart kann man die Temperatur messen, z.B. im Tee. Hierfür kann man den verkabelten DS18B20 verwenden.</p>
 </section>
 <section id="luftdruck" class="level2">
 <h2 class="anchored" data-anchor-id="luftdruck">Luftdruck</h2>
-<p>Zur Messung des Luftdrucks kann man den Sensor BMP180 verwenden. Dieser Sensor ist sehr genau und wird z.B. in Drohnen als Höhenmesser verwendet. Eine Besonderheit ist, dass der Sensor zwei Signalleitungen benötigt. Diese heißen I2C SDA und I2C SCL und können am Microcontroller auch nicht beliebig platziert werden. Im vorliegenden Beispiel nutzen wir die Anschlüsse D2 und D1.</p>
+<p>Zur Messung des Luftdrucks kann man den Sensor BMP180 verwenden. Dieser Sensor ist sehr genau und wird z.B. in Drohnen als Höhenmesser verwendet. Eine Besonderheit ist, dass der Sensor zwei Signalleitungen benötigt. Diese heißen “I2C SDA” und “I2C SCL” und können am Mikrocontroller auch nicht beliebig platziert werden. Im vorliegenden Beispiel nutzen wir die Anschlüsse D2 und D1.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="bmp180.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
