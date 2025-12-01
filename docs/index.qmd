@@ -1,0 +1,8 @@
+---
+title: "Toy Sensors"
+format: html
+embed-resources: true
+---
+
+* [Mikrocontroller Experiments with Tasmota](mc-with-tasmota\mc-with-tasmota.html)
+* [Adventsbeleuchtung](advent\advent.html)
