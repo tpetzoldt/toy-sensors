@@ -92,10 +92,12 @@ Im vorliegenden Fall wurde im Interesse der Vereinfachung auf die beiden Widerst
 
 Die gelötete Schaltung kommt mit sehr wenigen Lötpunkten aus.
 Beim unten stehenden Beispiel wurde im Interesse eines einfachen Nachbaus ein "Lötbares Breadboard" verwendet.
-Es hat zum Steckbread kompatible elektrische Verbindungen, so dass man die Schaltung 1:1 vom Steckbrett übertragen kann und keine zusätzlichen Verbindungen und Leiterbahnen anlegen muss.
+Es hat zum Steckbrett kompatible elektrische Verbindungen, so dass man die Schaltung 1:1 vom Steckbrett übertragen kann und keine zusätzlichen Verbindungen und Leiterbahnen anlegen muss.
 Mit einer Lochrasterplatte oder einer richtigen Leiterplatte gelingt ein noch kompakterer Aufbau.
 
-Am Mikrocontroller sind es lediglich der 5V-Ausgang, G (Ground, Masse) und der digitale Pin D6.
+Am Mikrocontroller sind lediglich drei Lötstellen erforderlich, der 5V-Ausgang, G (Ground, Masse) und der digitale Pin D6.
+Aus Gründen der Stabilität verlötet man zum Schluss alle Pins, oder zumindest die 4 an den Ecken.
+
 Am Transistor ist die Reihenfolge:
 
 - links: Steuerleitung vom Mikrocontroller (D6)
@@ -108,17 +110,26 @@ Zum Abschluss des Adventssterns wurde eine zweiadrige Leitung mit Mini-Bananenst
 ![Schaltung auf einem "lötbaren Steckbrett"](fig/protoboard.jpg)
 ## Gehäuse
 
-Als Gehäuse kann eine handelsübliche Dose aus ABS-Kunrsstoff verwendet werden.
-Im vorliegenden Fall wurde eine kleine Geschenkebox aus dem Weihnachtsdeko-Angebot verwendet.
-Sie fügt sich dekorativ in die Umgebung ein, außerdem kann man überschüssige Kabel im Inneren verstauen. 
-Auf Grund des sehr geringen Stromverbrauchs erwärmt sich die Schaltung nicht, dennoch sind im Inneren Abstandshalter aus Kunststoff zu empfehlen.
+Als Gehäuse kann ein handelsübliches Elektronikgehäuse aus ABS-Kunststoff verwendet werden. Diese sind robust und hitzebeständig.
+
+Im vorliegenden Fall wurde jedoch eine kleine Geschenkebox aus dem Weihnachtsdeko-Angebot verwendet.
+Sie fügt sich dekorativ in die Umgebung ein und bietet Platz für überschüssige Kabel.
+**Achtung:** Da Pappe leicht entflammbar ist, gilt diese Gehäusewahl ausschließlich für die hocheffiziente 6V-Version der Schaltung. Außerdem sollte die Gesamtlast auf maximal drei Sternchen begrenzt bleiben.
+
+Aufgrund des sehr geringen Stromverbrauchs erwärmt sich die Schaltung bei dieser Last kaum. Dennoch sind im Inneren Abstandshalter aus Kunststoff zwingend zu empfehlen, um direkten Kontakt zwischen der Leiterplatte und der Pappe zu vermeiden und die minimal entstehende Wärme abzuführen.
 
 ![Geschenkebox als Gehäuse](fig/box.jpg)
+
+## Energieeffizienz
+
+Der größte Stromverbraucher des D1 mini ist das WLAN. Bei einem Gerät, das hauptsächlich über interne Timer gesteuert wird, kann man die Schlafperiode des Mikrocontrollers maximieren, indem man den Sleep-Parameter auf 200ms setzt (`Sleep 200`). Der Wert (200 Millisekunden) ist ein Kompromiss zwischen Stromersparnis und guter Reaktionsfähigkeit des Controllers. Erfahrungen zeigen, dass höhere Werte (z.B. Sleep 250) zu einer merklichen Trägheit beim Aufruf des Web-Interface und zu Problemen bei Over-the-Air-Updates (OTA) führen können.
+
+Auch bei den Sternchen kann man Strom sparen, indem man sie nur so hell einstellt wie nötig.
 
 
 # Ausblick
 
-An Stelle von Tasmota kann mit Hilfe der Arduino-Umgebung auch eine eigenes Zeitschaltprogramm schreiben.
+An Stelle von Tasmota kann mit Hilfe der Arduino-Umgebung auch ein eigenes Zeitschaltprogramm geschrieben werden. In einem solchen Programm müsste man die Zeit nur gelegentlich aus dem WLAN abrufen und könnte das WLAN anschließend komplett abschalten (`WiFi.disconnect()`), um den Stromverbrauch noch weiter zu senken als mit Tasmotas Light Sleep Mode.
 
 Die Tasmota-Software hat jedoch noch  weitere Vorteile, so kann man z.B. auch mehrere LEDs schalten oder Sensoren hinzufügen, z.B. für die Raumtemperatur. Auch kann man mit Tasmota bestimmte Schaltsteckdosen steuern, z.B. für den Schwibbogen.
 
