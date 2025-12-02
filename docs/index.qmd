@@ -1,12 +1,46 @@
 ---
-title: "Toy Sensors"
-format: html
+title: "Toy Sensors & Smart Home Projekte"
+format: 
+  html:
+    toc: true
 embed-resources: true
 ---
 
-This repository contains some basic microcontroller experiments for kids. 
-The first examples use an ESP 8266 development board with the ready-made [Tasmota](https://github.com/arendst/Tasmota/) firmware from [Theo Arends](https://github.com/arendst), so it needs not soldering and programming.
+This repository contains some basic microcontroller experiments for kids and their parents.
+The first example uses an ESP 8266 development board with the ready-made [Tasmota](https://github.com/arendst/Tasmota/) firmware from [Theo Arends](https://github.com/arendst), so it needs not soldering and programming.
 
 
-* [Mikrocontrollerexperimente ohne Programmieren und Löten](mc-with-tasmota\mc-with-tasmota.html)
-* [Adventsbeleuchtung](advent\advent.html)
+# Übersicht
+
+Do it yourself Elektronik-Projektseite. Hier finden Sie Anleitungen zum Aufbau von energieeffizienten und **WLAN-gesteuerten Schaltungen** mit ESP8266-Mikrocontrollern.
+
+Die Projekte nutzen ausschließlich Niederspannung und **Logic-Level-MOSFETs** anstelle von ineffizienten Relais, um eine hohe Zuverlässigkeit, geringen Stromverbrauch und erweiterte Funktionen wie Dimmbarkeit zu gewährleisten.
+
+
+# Projekte und Anleitungen
+
+
+## Mikrocontroller ohne Programmieren und Löten 
+
+**Setup-Guide:** Eine Grundlage für Projekte, die auf der Tasmota-Firmware basieren.
+
+* Vorbereitung des ESP8266-Boards (z.B. D1 mini).
+* Installation der **Tasmota-Firmware** über den Web-Installer.
+* Einrichtung der WLAN-Verbindung und der Basis-Konfiguration.
+* Steuern von Licht und Ton
+* Messung von Temperatur, Luftfeuchte und Luftdruck
+* **Bauanleitung:** [Mikrocontrollerexperimente ohne Programmieren und Löten](mc-with-tasmota\mc-with-tasmota.html)
+
+
+## WiFi-Zeitschaltung für Hernhuter Sternchen
+
+**Projekt:** WLAN-gesteuerte Zeitschaltuhr für die Weihnachtsdekoration.
+
+* Steuerung über Tasmota: Flexible Timer und Fernsteuerung über WLAN.
+* Effiziente Schaltung: Nutzung des Logic-Level MOSFETs **IRLZ24N** anstelle eines Relais.
+* Dimmbarkeit (PWM): Stufenlose Helligkeitsregelung über die Software.
+* **Bauanleitung:** [WiFi-Zeitschaltung für Hernhuter Sternchen](advent/advent.html)
+
+---
+
+tpetzoldt, 2025-12-02

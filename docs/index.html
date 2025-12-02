@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Toy Sensors</title>
+<title>Toy Sensors &amp; Smart Home Projekte</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -3045,15 +3045,28 @@ vertical-align: -.125em;
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#übersicht" id="toc-übersicht" class="nav-link active" data-scroll-target="#übersicht">Übersicht</a></li>
+  <li><a href="#projekte-und-anleitungen" id="toc-projekte-und-anleitungen" class="nav-link" data-scroll-target="#projekte-und-anleitungen">Projekte und Anleitungen</a>
+  <ul class="collapse">
+  <li><a href="#mikrocontroller-ohne-programmieren-und-löten" id="toc-mikrocontroller-ohne-programmieren-und-löten" class="nav-link" data-scroll-target="#mikrocontroller-ohne-programmieren-und-löten">Mikrocontroller ohne Programmieren und Löten</a></li>
+  <li><a href="#wifi-zeitschaltung-für-hernhuter-sternchen" id="toc-wifi-zeitschaltung-für-hernhuter-sternchen" class="nav-link" data-scroll-target="#wifi-zeitschaltung-für-hernhuter-sternchen">WiFi-Zeitschaltung für Hernhuter Sternchen</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Toy Sensors</h1>
+<h1 class="title">Toy Sensors &amp; Smart Home Projekte</h1>
 </div>
 
 
@@ -3070,11 +3083,39 @@ vertical-align: -.125em;
 </header>
 
 
-<p>This repository contains some basic microcontroller experiments for kids. The first examples use an ESP 8266 development board with the ready-made <a href="https://github.com/arendst/Tasmota/">Tasmota</a> firmware from <a href="https://github.com/arendst">Theo Arends</a>, so it needs not soldering and programming.</p>
+<p>This repository contains some basic microcontroller experiments for kids and their parents. The first example uses an ESP 8266 development board with the ready-made <a href="https://github.com/arendst/Tasmota/">Tasmota</a> firmware from <a href="https://github.com/arendst">Theo Arends</a>, so it needs not soldering and programming.</p>
+<section id="übersicht" class="level1">
+<h1>Übersicht</h1>
+<p>Do it yourself Elektronik-Projektseite. Hier finden Sie Anleitungen zum Aufbau von energieeffizienten und <strong>WLAN-gesteuerten Schaltungen</strong> mit ESP8266-Mikrocontrollern.</p>
+<p>Die Projekte nutzen ausschließlich Niederspannung und <strong>Logic-Level-MOSFETs</strong> anstelle von ineffizienten Relais, um eine hohe Zuverlässigkeit, geringen Stromverbrauch und erweiterte Funktionen wie Dimmbarkeit zu gewährleisten.</p>
+</section>
+<section id="projekte-und-anleitungen" class="level1">
+<h1>Projekte und Anleitungen</h1>
+<section id="mikrocontroller-ohne-programmieren-und-löten" class="level2">
+<h2 class="anchored" data-anchor-id="mikrocontroller-ohne-programmieren-und-löten">Mikrocontroller ohne Programmieren und Löten</h2>
+<p><strong>Setup-Guide:</strong> Eine Grundlage für Projekte, die auf der Tasmota-Firmware basieren.</p>
 <ul>
-<li><a href="mc-with-tasmota\mc-with-tasmota.html">Mikrocontrollerexperimente ohne Programmieren und Löten</a></li>
-<li><a href="advent\advent.html">Adventsbeleuchtung</a></li>
+<li>Vorbereitung des ESP8266-Boards (z.B. D1 mini).</li>
+<li>Installation der <strong>Tasmota-Firmware</strong> über den Web-Installer.</li>
+<li>Einrichtung der WLAN-Verbindung und der Basis-Konfiguration.</li>
+<li>Steuern von Licht und Ton</li>
+<li>Messung von Temperatur, Luftfeuchte und Luftdruck</li>
+<li><strong>Bauanleitung:</strong> <a href="mc-with-tasmota\mc-with-tasmota.html">Mikrocontrollerexperimente ohne Programmieren und Löten</a></li>
 </ul>
+</section>
+<section id="wifi-zeitschaltung-für-hernhuter-sternchen" class="level2">
+<h2 class="anchored" data-anchor-id="wifi-zeitschaltung-für-hernhuter-sternchen">WiFi-Zeitschaltung für Hernhuter Sternchen</h2>
+<p><strong>Projekt:</strong> WLAN-gesteuerte Zeitschaltuhr für die Weihnachtsdekoration.</p>
+<ul>
+<li>Steuerung über Tasmota: Flexible Timer und Fernsteuerung über WLAN.</li>
+<li>Effiziente Schaltung: Nutzung des Logic-Level MOSFETs <strong>IRLZ24N</strong> anstelle eines Relais.</li>
+<li>Dimmbarkeit (PWM): Stufenlose Helligkeitsregelung über die Software.</li>
+<li><strong>Bauanleitung:</strong> <a href="advent/advent.html">WiFi-Zeitschaltung für Hernhuter Sternchen</a></li>
+</ul>
+<hr>
+<p>tpetzoldt, 2025-12-02</p>
+</section>
+</section>
 
 </main>
 <!-- /main column -->
