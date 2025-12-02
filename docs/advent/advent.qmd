@@ -114,9 +114,9 @@ Als Gehäuse kann ein handelsübliches Elektronikgehäuse aus ABS-Kunststoff ver
 
 Im vorliegenden Fall wurde jedoch eine kleine Geschenkebox aus dem Weihnachtsdeko-Angebot verwendet.
 Sie fügt sich dekorativ in die Umgebung ein und bietet Platz für überschüssige Kabel.
-**Achtung:** Da Pappe leicht entflammbar ist, gilt diese Gehäusewahl ausschließlich für die hocheffiziente 6V-Version der Schaltung. Außerdem sollte die Gesamtlast auf maximal drei Sternchen begrenzt bleiben.
+**Achtung:** Da Pappe leicht entflammbar ist, gilt diese Gehäusewahl ausschließlich für die hocheffiziente 6V-Version der Schaltung. Außerdem sollte die Gesamtlast auf maximal drei Sternchen mit LED-Licht (nicht Glühlampe) begrenzt bleiben.
 
-Aufgrund des sehr geringen Stromverbrauchs erwärmt sich die Schaltung bei dieser Last kaum. Dennoch sind im Inneren Abstandshalter aus Kunststoff zwingend zu empfehlen, um direkten Kontakt zwischen der Leiterplatte und der Pappe zu vermeiden und die minimal entstehende Wärme abzuführen.
+Aufgrund des sehr geringen Stromverbrauchs erwärmt sich die Schaltung bei dieser Last kaum. Dennoch sind im Inneren Abstandshalter aus Kunststoff zwingend erforderlich, um direkten Kontakt zwischen der Leiterplatte und der Pappe zu vermeiden und die minimal entstehende Wärme abzuführen.
 
 ![Geschenkebox als Gehäuse](fig/box.jpg)
 
