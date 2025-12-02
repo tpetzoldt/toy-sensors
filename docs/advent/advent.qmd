@@ -1,0 +1,131 @@
+---
+title: "WiFi-Zeitschaltung für Hernhuter Sternchen"
+format: html
+editor: source
+---
+
+![](fig/sternchen.jpg)
+
+# Einführung
+
+In der Adventszeit erleuchten vielerorts Schwibbögen und Adventssterne die Fenster, vor allem im Erzgebirge.
+Dank LEDs ist der Stromverbrauch viel geringer als früher, allerdings verbrauchen die meisten Zeitschaltuhren mehr Energie als die Sternchen selbst. Außerdem muss man jede Zeitschaltuhr einzeln programmieren.
+
+Das folgende Projekt werden die Sternchen und Lichterketten über ein Handynetzteil versorgt.
+Über einen ESP-Mikrocontroller und die Tasmota-Software bekommt die Steuerung einen flexiblen Timer, außerdem lassen sich die Sternchen über WLAN vom Handy steuern. Statt eines Relais dient ein Feldeffekt-Transistor als elektronischer Schalter. Der verbraucht sehr viel weniger Energie als ein Relais und man kann das Licht und sogar dimmen.
+
+# Bauteile und Werkzeuge
+
+## Bauteile
+
+* Handynetzteil 5V mit USB-Kabel
+* ESP8266 Mikrocontroller, z.B. Wemos D1 mini
+* Transistor (MOSFET) IRLZ 24N
+* MT3608 DC-DC Step up Regler
+* Schaltdraht
+* Lochraster-Leiterplatte
+* Deko-Box als Gehäuse
+
+und für den Steckbrett-Aufbau zusätzlich:
+
+* Steckbrett (klein)
+* LED für Testaufbau
+* Widerstand 220 Ohm
+
+Statt des etwas überdimensionierten IRLZ 24N kann auch ein anderer "logic level" MOSFET verwendet werden.
+So ist z.B. ein 2N7000 viel kleiner, hat aber auch eine andere Pin-belegung, eine höhere eigene Verlustleistung wegen des höheren Innenwiderstands und nur wenig Reserven, falls man etwas größere Abnehmer anschließen möchte, z.B. mehrere Sternchen.
+
+
+
+## Werkzeuge
+
+* Lötkolben, Lötzinn
+* Voltmeter zur Einstellung der Ausgangsspannung des Step up Reglers.
+
+## Software
+
+* Tasmota [https://tasmota.github.io/](https://tasmota.github.io/)
+
+
+# Schaltungsaufbau
+
+## Mikrocontroller und Step-Up Reggler
+
+Der D1 mini wird im Regelfall unverlötet geliefert, deshalb müssen zunächst die Pin-Leisten angelötet werden.
+Da das Netzteil 5V liefert, die Hernhuter Sternchen jedoch 6V, wird die 5V-Spannung mit einem Step-Up Regler etwas angehoben.
+Das hat auch den Vorteil, dass man damit prinzipiell auch Verbraucher mit 12V oder 24V versorgen kann, z.B. LED-Streifen.
+Grundsätzlich funktioniert die Schaltung auch ohne den Step-Up Regler, dann sind die Sternchen minimal dunkler.
+
+Eine solche Schaltung mit einem bereits verlötet erhältlichem Mikrocontroller und ohne Step-Up-Regler findet sich [hier](mc-with-tasmota/mc-with-tasmota).
+
+## Tasmota
+
+Die [Tasmota-Software](https://tasmota.github.io/) kann mit Hilfe eines Web-Installers direkt auf dem Board installiert werden.
+Voraussetzung ist ein dafür geeigneter Webbrowser (z.B. Microsoft Edge) und der passende CH 340 USB-Treiber auf dem PC.
+
+Anschließend wird der D1 mini mit dem WLAN verbunden und konfiguriert. 
+Für den beschriebenen Aufbau wurden folgende Einstellungen gewählt:
+
+* Module type: Generic (0)
+* D6 GPIO12 PWM 1
+
+Die Einstellung "PWM" (Pulsweitenmodulation) ermöglicht es, die Sternchen zu dimmen.
+
+## Steckbrett-Aufbau
+
+Zunächst empfiehlt es sich, den Aufbau auf einem Steckbrett zu testen. 
+Als Beleuchtung dient eine LED mit Vorwiderstand.
+Prinzipiell könnte man den Adventsstern oder eine LED-Ketter auch direkt mit dem Steckbrett verbinden.
+Zur Stromversorgung dient ein Mini-USB-Kabel direkt vom Handynetzteil. 
+Der im Controller-Board eingebaute Spannnungsregler liefert daraus die 3.3V Versorgungsspannung. 
+Den Step-Up Regler verbinden wir jedoch direkt mit der 5V-Leitung.
+Für größere Stromverbraucher empfiehlt es sich, die Versorgungsspannung für den Step up Regler direkt bereitzustellen und nicht aus dem 5V-Pin des Mikrocontrollers abzuleiten.
+Im Versuchsaufbau wurde der MOSFET direkt mit dem D6-Pin des Mikrocontrollers verbunden.
+Noch besser ist es, dafür einen Widerstand (100 Ohm) zu verwenden und außerdem das Gate des MOSFETs mit einem 10kOhm pull-down Widerstand mit der Masse zu verbinden.
+Im vorliegenden Fall wurde im Interesse der Vereinfachung auf die beiden Widerstände verzichtet, da der IRLZ 24N sehr robust und de-facto überdimensioniert ist.
+
+
+
+![Steckbrett-Aufbau](fig/breadboard.jpg)
+
+## Gelötete Schaltung
+
+Die gelötete Schaltung kommt mit sehr wenigen Lötpunkten aus.
+Beim unten stehenden Beispiel wurde im Interesse eines einfachen Nachbaus ein "Lötbares Breadboard" verwendet.
+Es hat zum Steckbread kompatible elektrische Verbindungen, so dass man die Schaltung 1:1 vom Steckbrett übertragen kann und keine zusätzlichen Verbindungen und Leiterbahnen anlegen muss.
+Mit einer Lochrasterplatte oder einer richtigen Leiterplatte gelingt ein noch kompakterer Aufbau.
+
+Am Mikrocontroller sind es lediglich der 5V-Ausgang, G (Ground, Masse) und der digitale Pin D6.
+Am Transistor ist die Reihenfolge:
+
+- links: Steuerleitung vom Mikrocontroller (D6)
+- mitte: Ausgang über den Vorwiderstand zur LED
+- rechts: Masse (G)
+
+Zum Abschluss des Adventssterns wurde eine zweiadrige Leitung mit Mini-Bananensteckern direkt an die Leiterplatte gelötet. Daran lässt sich der Adventsstern direkt anstecken.
+
+
+![Schaltung auf einem "lötbaren Steckbrett"](fig/protoboard.jpg)
+## Gehäuse
+
+Als Gehäuse kann eine handelsübliche Dose aus ABS-Kunrsstoff verwendet werden.
+Im vorliegenden Fall wurde eine kleine Geschenkebox aus dem Weihnachtsdeko-Angebot verwendet.
+Sie fügt sich dekorativ in die Umgebung ein, außerdem kann man überschüssige Kabel im Inneren verstauen. 
+Auf Grund des sehr geringen Stromverbrauchs erwärmt sich die Schaltung nicht, dennoch sind im Inneren Abstandshalter aus Kunststoff zu empfehlen.
+
+![Geschenkebox als Gehäuse](fig/box.jpg)
+
+
+# Ausblick
+
+An Stelle von Tasmota kann mit Hilfe der Arduino-Umgebung auch eine eigenes Zeitschaltprogramm schreiben.
+
+Die Tasmota-Software hat jedoch noch  weitere Vorteile, so kann man z.B. auch mehrere LEDs schalten oder Sensoren hinzufügen, z.B. für die Raumtemperatur. Auch kann man mit Tasmota bestimmte Schaltsteckdosen steuern, z.B. für den Schwibbogen.
+
+Hat man mehrere Sternchen und Lichterketten, kann man sie mit [TasmoAdmin](https://github.com/TasmoAdmin/TasmoAdmin) auf einem Raspberry Pi über eine gemeinsame Weboberfläche steuern und programmieren.
+
+
+
+Viel Spaß!
+
+
