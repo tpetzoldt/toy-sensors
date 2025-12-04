@@ -29,7 +29,7 @@ Die Projekte nutzen ausschließlich Niederspannung und **Logic-Level-MOSFETs** a
 * Einrichtung der WLAN-Verbindung und der Basis-Konfiguration.
 * Steuern von Licht und Ton
 * Messung von Temperatur, Luftfeuchte und Luftdruck
-* **Bauanleitung:** [Mikrocontrollerexperimente ohne Programmieren und Löten](mc-with-tasmota\mc-with-tasmota.html)
+* **Bauanleitung:** [Mikrocontrollerexperimente ohne Programmieren und Löten](mc-with-tasmota/index.html)
 
 
 ## WiFi-Zeitschaltung für Hernhuter Sternchen
@@ -39,7 +39,7 @@ Die Projekte nutzen ausschließlich Niederspannung und **Logic-Level-MOSFETs** a
 * Steuerung über Tasmota: Flexible Timer und Fernsteuerung über WLAN.
 * Effiziente Schaltung: Nutzung des Logic-Level MOSFETs **IRLZ24N** anstelle eines Relais.
 * Dimmbarkeit (PWM): Stufenlose Helligkeitsregelung über die Software.
-* **Bauanleitung:** [WiFi-Zeitschaltung für Hernhuter Sternchen](advent/advent.html)
+* **Bauanleitung:** [WiFi-Zeitschaltung für Hernhuter Sternchen](advent/index.html)
 
 ---
 
